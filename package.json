@@ -6,7 +6,8 @@
   "author": "cedriking <cedrik.git@tryninja.io>",
   "license": "MIT",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "result.png"
   ],
   "scripts": {
     "build": "tsc",
