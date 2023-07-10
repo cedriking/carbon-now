@@ -45,16 +45,16 @@ const regexGen = async () => {
   }
 })();
 `,
-    'test.png',
+    './test.png',
   );
 
   expect(result.endsWith('test.png')).toBe(true);
   expect(existsSync(result)).toBe(true);
   // compare result.png with test.png
-  const resultPng = readFileSync('result.png');
-  const testPng = readFileSync('test.png');
+  const resultPng = readFileSync('./result.png');
+  const testPng = readFileSync('./test.png');
 
   expect(resultPng.equals(testPng)).toBe(true);
 
-  unlinkSync('test.png');
+  unlinkSync('./test.png');
 }, 10000);
