@@ -2,6 +2,7 @@ export type themesType =
   | 'a11y-dark'
   | 'atom-dark'
   | 'base16-ateliersulphurpool.light'
+  | 'blackboard'
   | 'cb'
   | 'darcula'
   | 'default'
@@ -55,3 +56,5 @@ export type fontsType =
   | 'Source-Code-Pro'
   | 'Space-Mono'
   | 'Ubuntu-Mono';
+
+export type ExportSizeType = 1 | 2 | 4;

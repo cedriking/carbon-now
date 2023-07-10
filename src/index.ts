@@ -12,9 +12,12 @@ export class Carbon {
     font: 'Hack',
     windowControls: true,
     widthAdjustment: true,
-    line: false,
-    firstLine: 1,
+    lineNumbers: false,
+    firstLineNumber: 1,
     watermark: false,
+    fontSize: 18,
+    lineHeight: 169,
+    exportSize: 2,
   };
 
   constructor(options: CarbonOptions) {
@@ -24,29 +27,32 @@ export class Carbon {
     this.options = { ...this.options, ...options };
   }
 
-  public async generate(code: string, outputFilePath: string) {
-    let fontParam = this.options.font.replace('-', ' ');
+  public async generate(code: string, outputFilePath: string): Promise<string> {
+    const fontParam = this.options.font?.replace('-', ' ');
     // Parameter Url
-    let parameter = {
-      code: code,
+    const parameter = {
+      code,
       l: this.options.lang,
       bg: this.options.background,
       t: this.options.theme,
       fm: fontParam,
       wc: this.options.windowControls,
       wa: this.options.widthAdjustment,
-      ln: this.options.line,
-      fl: this.options.firstLine,
+      ln: this.options.lineNumbers,
+      fl: this.options.firstLineNumber,
       wm: this.options.watermark,
+      fs: this.options.fontSize + 'px',
+      ls: this.options.lineHeight,
+      es: this.options.exportSize + 'x',
     };
 
-    let url = 'https://carbon.now.sh?' + this.createParameter(parameter);
+    const url = 'https://carbon.now.sh?' + this.createParameter(parameter);
     return this.download(url, outputFilePath);
   }
 
-  private async download(url: string, outputFilePath: string) {
+  private async download(url: string, outputFilePath: string): Promise<string> {
     // Parse Output Folder
-    let output = path.resolve(outputFilePath);
+    const output = path.resolve(outputFilePath);
     let folder = path.dirname(output);
     let filename = path.basename(output);
     if (!path.extname(filename)) {
@@ -57,7 +63,7 @@ export class Carbon {
     // Start Puppeteer Session
     const browser = await puppeteer.launch({
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      headless: true,
+      headless: 'new',
     });
 
     // Open Page and Go to Carbon Site
@@ -68,14 +74,13 @@ export class Carbon {
     await page.setViewport({
       width: 1920,
       height: 1080,
-      deviceScaleFactor: 2,
     });
 
     // Download
     let downloaded: string | null = null;
 
     // Event
-    let client = await page.target().createCDPSession();
+    const client = await page.target().createCDPSession();
     await client.send('Browser.setDownloadBehavior', {
       behavior: 'allowAndName',
       downloadPath: folder,
@@ -85,7 +90,7 @@ export class Carbon {
     client.on('Browser.downloadProgress', async (event) => {
       // Identify if File Downloaded
       if (event.state === 'completed') {
-        let newfilename: string = path.resolve(folder, filename);
+        const newfilename: string = path.resolve(folder, filename);
         fs.renameSync(path.resolve(folder, event.guid), newfilename);
 
         // Close Browser after Success Download
@@ -100,7 +105,7 @@ export class Carbon {
     await page.click('.jsx-2184717013');
 
     return new Promise(async (resolve, reject) => {
-      let checkDownloaded = setInterval(() => {
+      const checkDownloaded = setInterval(() => {
         if (downloaded !== null) {
           clearInterval(checkDownloaded);
           resolve(downloaded);
@@ -152,6 +157,7 @@ export class Carbon {
       'a11y-dark',
       'atom-dark',
       'base16-ateliersulphurpool.light',
+      'blackboard',
       'cb',
       'darcula',
       'default',
