@@ -1,4 +1,8 @@
-# Carbon API
+# carbon-now
+
+[![npm](https://img.shields.io/npm/v/carbon-now.svg)](https://www.npmjs.com/package/carbon-now)
+[![npm](https://img.shields.io/npm/dt/carbon-now.svg)](https://www.npmjs.com/package/carbon-now)
+[![npm](https://img.shields.io/npm/l/carbon-now.svg)](https://www.npmjs.com/package/carbon-now)
 
 Create beautiful images of your source code thanks to Carbon API. Typescript and Javascript support.
 
