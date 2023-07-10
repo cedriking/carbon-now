@@ -1,4 +1,4 @@
-# carbon-api
+# Carbon API
 
 Create beautiful images of your source code thanks to Carbon API. Typescript and Javascript support.
 
@@ -23,7 +23,7 @@ Create beautiful images of your source code thanks to Carbon API. Typescript and
 ## Usage
 
 ```js
-import { Carbon } from 'carbon-api';
+import { Carbon } from 'carbonapi';
 
 const carbon = new Carbon({
   lang: 'javascript',
