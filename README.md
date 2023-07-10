@@ -6,7 +6,7 @@
 
 Create beautiful images of your source code thanks to Carbon API. Typescript and Javascript support.
 
-![result.png](./result.png)
+![result.png](result.png)
 
 ## Options
 
@@ -44,4 +44,4 @@ async () => {
 ### Notes
 
 - This is an unofficial API for [Carbon](https://carbon.now.sh/). It is not affiliated with [Carbon](https://carbon.now.sh/) in any way.
-- Check all the available themes, langs and fonts [here](./src/types.ts).
+- Check all the available themes, langs and fonts [here](https://github.com/cedriking/carbon-api/blob/main/src/types.ts).
