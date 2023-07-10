@@ -6,7 +6,7 @@
 
 Create beautiful images of your source code thanks to Carbon API. Typescript and Javascript support.
 
-![result.png](result.png)
+![result.png](https://github.com/cedriking/carbon-api/raw/main/result.png)
 
 ## Options
 
