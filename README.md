@@ -23,7 +23,7 @@ Create beautiful images of your source code thanks to Carbon API. Typescript and
 ## Usage
 
 ```js
-import { Carbon } from 'carbonapi';
+import { Carbon } from 'carbon-now';
 
 const carbon = new Carbon({
   lang: 'javascript',
