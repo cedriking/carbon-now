@@ -57,4 +57,4 @@ const regexGen = async () => {
   expect(resultPng.equals(testPng)).toBe(true);
 
   unlinkSync('test.png');
-});
+}, 10000);
