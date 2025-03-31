@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "fs-extra": "^11.2.0",
-    "puppeteer": "^22.5.0"
+    "puppeteer": "^24.2.0"
   }
 }
